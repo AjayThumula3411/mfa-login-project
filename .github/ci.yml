@@ -2,30 +2,33 @@ name: CI Pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
+      # 1. Checkout code
       - name: Checkout Code
         uses: actions/checkout@v3
 
+      # 2. Setup Node.js
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
+      # 3. Install dependencies
       - name: Install Backend Dependencies
-        run: |
-          cd backend
-          npm install
+        working-directory: backend
+        run: npm install
 
+      # 4. Build TypeScript
       - name: Build TypeScript
-        run: |
-          cd backend
-          npx tsc
+        working-directory: backend
+        run: npx tsc
 
-      - name: Done
-        run: echo "CI/CD setup complete"
+      # 5. Success message
+      - name: CI Completed
+        run: echo "CI/CD pipeline executed successfully"
