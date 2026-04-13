@@ -16,12 +16,15 @@
     "express": "^5.2.1",
     "pg": "^8.20.0"
   },
-  "devDependencies": {
-    "@types/bcrypt": "^6.0.0",
-    "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.6",
-    "@types/node": "^25.6.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^6.0.2"
-  }
+   "devDependencies": {
+   "@types/bcrypt": "^6.0.0",
+   "@types/cors": "^2.8.19",
+   "@types/express": "^5.0.6",
+   "@types/node": "^20.0.0",
+   "ts-node": "^10.9.2",
+   "typescript": "^5.4.5"
+
+
 }
+  }
+
