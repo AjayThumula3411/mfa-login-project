@@ -1,6 +1,7 @@
-const API = "http://localhost:5000";   //backend server address
+const API: string = "http://localhost:5000";
 
-async function register() {
+// make functions global
+(window as any).register = async function () {
   await fetch(API + "/register", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -11,9 +12,9 @@ async function register() {
   });
 
   alert("Registered");
-}
+};
 
-async function login() {
+(window as any).login = async function () {
   await fetch(API + "/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -24,9 +25,9 @@ async function login() {
   });
 
   alert("OTP sent (check backend terminal)");
-}
+};
 
-async function verify() {
+(window as any).verify = async function () {
   const res = await fetch(API + "/verify", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -37,4 +38,4 @@ async function verify() {
   });
 
   alert(await res.text());
-}
+};

@@ -1,10 +1,8 @@
 "use strict";
-
-const API = "http://localhost:5000"; // backend URL
-
-//  REGISTER
-async function register() {
-    const res = await fetch(API + "/register", {
+const API = "http://localhost:5000";
+// make functions global
+window.register = async function () {
+    await fetch(API + "/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -12,14 +10,10 @@ async function register() {
             password: document.getElementById("rPass").value
         })
     });
-
-    const data = await res.text();  //  get backend response
-    alert(data);                    // show real message
-}
-
-//  LOGIN
-async function login() {
-    const res = await fetch(API + "/login", {
+    alert("Registered");
+};
+window.login = async function () {
+    await fetch(API + "/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -27,13 +21,9 @@ async function login() {
             password: document.getElementById("pass").value
         })
     });
-
-    const data = await res.text();  
-    alert(data);                    // show real backend message
-}
-
-//  VERIFY OTP
-async function verify() {
+    alert("OTP sent (OTP sent to your email)");
+};
+window.verify = async function () {
     const res = await fetch(API + "/verify", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -42,7 +32,5 @@ async function verify() {
             otp: document.getElementById("otp").value
         })
     });
-
-    const data = await res.text();
-    alert(data);
-}
+    alert(await res.text());
+};
